@@ -1,0 +1,18 @@
+def bank_program():
+    print("Welcome to the bank!")
+    balance = 0
+
+    while True:
+        try:
+            deposit = int(input("Enter the amount of money you want to deposit: "))
+            balance += deposit
+            print(f"Your new balance is: {balance}")
+        except ValueError:
+            print("Invalid input. Please enter a valid integer.")
+
+        another_deposit = input("Do you want to make another deposit? (yes/no): ").strip().lower()
+        if another_deposit != 'yes':
+            print(f"Thank you! Your total balance is: {balance}")
+            break
+
+bank_program()
