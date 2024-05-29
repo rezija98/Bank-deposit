@@ -4,15 +4,32 @@ def bank_program():
 
     while True:
         try:
-            deposit = int(input("Enter the amount of money you want to deposit: "))
-            balance += deposit
-            print(f"Your new balance is: {balance}")
+            print("\nWhat would you like to do?")
+            print("1. Deposit money")
+            print("2. Withdraw money")
+            print("3. Check balance")
+            print("4. Exit")
+            choice = int(input("Enter your choice (1/2/3/4): "))
+            
+            if choice == 1:
+                deposit = int(input("Enter the amount of money you want to deposit: "))
+                balance += deposit
+                print(f"Your new balance is: {balance}")
+            elif choice == 2:
+                withdraw = int(input("Enter the amount of money you want to withdraw: "))
+                if balance - withdraw < 0:
+                    print("Withdrawal not possible. Insufficient funds.")
+                else:
+                    balance -= withdraw
+                    print(f"Your new balance is: {balance}")
+            elif choice == 3:
+                print(f"Your current balance is: {balance}")
+            elif choice == 4:
+                print(f"Thank you! Your total balance is: {balance}")
+                break
+            else:
+                print("Invalid choice. Please enter a number from 1 to 4.")
         except ValueError:
             print("Invalid input. Please enter a valid integer.")
-
-        another_deposit = input("Do you want to make another deposit? (yes/no): ").strip().lower()
-        if another_deposit != 'yes':
-            print(f"Thank you! Your total balance is: {balance}")
-            break
 
 bank_program()
